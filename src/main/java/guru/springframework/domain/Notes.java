@@ -1,6 +1,11 @@
 package guru.springframework.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 
 /**
  * Created by jt on 6/13/17.
@@ -8,37 +13,45 @@ import javax.persistence.*;
 @Entity
 public class Notes {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  public Notes() {
 
-    @OneToOne
-    private Recipe recipe;
+  }
 
-    @Lob
-    private String recipeNotes;
+  public Notes(String recipeNotes) {
+    this.recipeNotes = recipeNotes;
+  }
 
-    public Long getId() {
-        return id;
-    }
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  @OneToOne
+  private Recipe recipe;
 
-    public Recipe getRecipe() {
-        return recipe;
-    }
+  @Lob
+  private String recipeNotes;
 
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public String getRecipeNotes() {
-        return recipeNotes;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setRecipeNotes(String recipeNotes) {
-        this.recipeNotes = recipeNotes;
-    }
+  public Recipe getRecipe() {
+    return recipe;
+  }
+
+  public void setRecipe(Recipe recipe) {
+    this.recipe = recipe;
+  }
+
+  public String getRecipeNotes() {
+    return recipeNotes;
+  }
+
+  public void setRecipeNotes(String recipeNotes) {
+    this.recipeNotes = recipeNotes;
+  }
 }
